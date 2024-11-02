@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>Speedrun YouTube</title>
+</head>
+<body>
+    <div id="urlContainer">
+        <div class="container d-flex justify-content-center align-items-center vh-100">
+            <div class="special-card" style="width: 400px;">
+                <div class="card-body">
+                    <h5 class="card-title text-align-left"> <span style="color: #FF0000;">You</span><span style="color: #282828">tube React Machine</span></h5>
+                    <div id="urlInput">
+                        <input type="text" class="form-control mb-2 urlInput" placeholder="Entrez l'URL d'une vidéo YouTube">
+                    </div>
+                    <button id="addUrlButton" class="btn btn-secondary btn-block">Ajouter une URL Youtube</button>
+                    <button id="startButton" class="btn btn-primary btn-block">Start</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="overlay" class="overlay hidden">
+        <div id="overlayContent">
+            <!-- Conteneur centré à 200px du haut -->
+            <div id="overlayTimer" class="timer">00:00</div> <!-- Timer affiché au centre -->
+            <button id="refreshButton" class="btn btn-secondary">Recommencer</button> <!-- Bouton en dessous du timer -->
+        </div>
+    </div>
+
+    <div id="mainContainer" hidden>
+        <!-- Zone du lecteur YouTube -->
+        <div id="videoContainer" class="fullscreen">
+            <div id="youtubePlayer">
+                <script src="https://www.youtube.com/iframe_api"></script>
+            </div>
+        </div>
+
+        <!-- Zone des boutons et des titres à droite -->
+        <div id="buttonContainer" class="button-panel bg-dark p-3 text-light">
+            <!-- Timer stylisé -->
+            <div id="timer" class="timer bg-dark text-success p-2 mb-3 rounded">00:00</div>
+
+            <!-- Slider pour ajuster le volume avec icônes -->
+            <div class="volume-control mb-3">
+                <div class="d-flex align-items-center">
+                    <!-- Icône de volume bas -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-volume-down-fill" viewBox="0 0 16 16">
+                        <path d="M9 4a.5.5 0 0 0-.812-.39L5.825 5.5H3.5A.5.5 0 0 0 3 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 9 12zm3.025 4a4.5 4.5 0 0 1-1.318 3.182L10 10.475A3.5 3.5 0 0 0 11.025 8 3.5 3.5 0 0 0 10 5.525l.707-.707A4.5 4.5 0 0 1 12.025 8" />
+                    </svg>
+
+                    <!-- Slider -->
+                    <input id="volumeSlider" type="range" min="0" max="100" value="100" class="custom-range flex-grow-1">
+
+                    <!-- Icône de volume haut -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-volume-up-fill" viewBox="0 0 16 16">
+                        <path d="M11.536 14.01A8.47 8.47 0 0 0 14.026 8a8.47 8.47 0 0 0-2.49-6.01l-.708.707A7.48 7.48 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303z" />
+                        <path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.48 5.48 0 0 1 11.025 8a5.48 5.48 0 0 1-1.61 3.89z" />
+                        <path d="M8.707 11.182A4.5 4.5 0 0 0 10.025 8a4.5 4.5 0 0 0-1.318-3.182L8 5.525A3.5 3.5 0 0 1 9.025 8 3.5 3.5 0 0 1 8 10.475zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Liste des titres de vidéos avec style Bootstrap -->
+            <ul id="videoTitles" class="list-group">
+                <!-- Les titres de vidéos seront ajoutés ici par JavaScript -->
+            </ul>
+
+            <!-- Bouton pour activer/désactiver les sous-titres -->
+            <!--  <button id="toggleSubtitles" class="btn btn-secondary mt-3">Activer les sous-titres</button> -->
+        </div>
+    </div>
+
+
+
+    <div id="menu" class="hidden">
+        <ul id="videoTitles"></ul>
+    </div>
+
+
+    <script src="assets/js/script.js"></script>
+    <!-- Footer -->
+    <footer class="text-light py-3 position-fixed w-100" style="bottom: 0; right: 0;">
+        <div class="text-right" style="margin-right: 50px;">
+            <p>© Dev par Evoran</p>
+        </div>
+    </footer>
+
+
+</body>
+    </html>
