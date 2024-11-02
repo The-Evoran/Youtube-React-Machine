@@ -1,0 +1,160 @@
+﻿
+@font-face {
+    font-family: 'Trade Gothic';
+    src: url('chemin/vers/TradeGothic.woff2') format('woff2'); /* Lien vers ta police */
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Assurez-vous que le conteneur de la vidéo est toujours centré */
+#videoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+/* Le conteneur de la carte qui doit être masqué après le démarrage */
+#urlContainer.hidden {
+    display: none;
+}
+
+
+.timer {
+    font-size: 2rem; /* Taille de la police du timer */
+    background-color: rgba(0, 0, 0, 0.7); /* Fond semi-transparent */
+    color: white; /* Couleur du texte */
+    padding: 10px 20px; /* Espacement autour du texte */
+    border-radius: 5px; /* Arrondit les bords */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Ombre autour du timer */
+    margin-bottom: 20px; /* Espacement en bas */
+
+}
+.highlighted {
+    color: aqua !important;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none; /* Masquer l'élément */
+}
+/* Superposition qui recouvre toute la page */
+.overlay {
+    position: fixed; /* Fixe l'overlay sur toute la page */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    z-index: 999; /* S'assurer que l'overlay est au-dessus de tout */
+    display: flex; /* Flexbox pour centrer le contenu interne */
+    justify-content: center; /* Centrer horizontalement */
+    display: none
+}
+
+    /* Classe visible pour montrer la superposition */
+    .overlay.visible {
+        display: block;
+    }
+#overlayContent {
+    display: flex;
+    flex-direction: column; /* Aligne le contenu en colonne */
+    align-items: center; /* Centre les éléments horizontalement */
+    margin-top: 200px; /* Distance de 200px par rapport au haut de l'écran */
+}
+#mainContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+}
+
+/* Le lecteur vidéo occupe la largeur disponible à gauche moins la taille de la zone de boutons */
+.fullscreen {
+    flex: 1; /* Prend tout l'espace restant */
+    height: 100%;
+    background-color: black;
+}
+
+/* Conteneur des boutons à droite */
+.button-panel {
+    width: 300px; /* Largeur fixe de la zone des boutons, ajustable */
+    padding: 20px; /* Espacement interne pour les boutons */
+    background-color: #262626; /* Couleur de fond des boutons */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+    /* Style général des boutons */
+    .button-panel .btn {
+        width: 100%; /* Les boutons prennent toute la largeur de la zone */
+    }
+
+body {
+    background: linear-gradient(-45deg, #000421, #110527, #20062c, #54083d);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+.card-title {
+    font-size: 2rem; /* Rendre le titre plus grand */
+    font-weight: bold; /* Gras pour plus de visibilité */
+    position: relative;
+
+    color: #ffffff; /* Assurez-vous que la couleur est lisible selon ton fond */
+}
+.special-card {
+    /* create a custom class so you 
+   do not run into specificity issues 
+   against bootstraps styles
+   which tends to work better than using !important 
+   (future you will thank you later)*/
+    position: relative;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+h5 {
+    color: black;
+}
+
+/* Animation de "swipe up" */
+@keyframes swipeUp {
+    0% {
+        transform: translateY(100%); /* En dehors de l'écran */
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0); /* Retour à sa position d'origine */
+        opacity: 1;
+    }
+}
+
+/* Appliquer l'animation lorsque l'élément apparaît */
+.swipe-up {
+    animation: swipeUp 0.6s ease-out forwards;
+}
